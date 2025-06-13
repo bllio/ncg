@@ -1,0 +1,53 @@
+{
+  "name": "@bllio/ncg",
+  "version": "0.0.1",
+  "description": "Command-line tool for generating React TypeScript components",
+  "author": "Syabil Yusoff",
+  "license": "MIT",
+  "keywords": [
+    "cli",
+    "react",
+    "component",
+    "boilerplate",
+    "generator"
+  ],
+  "homepage": "https://github.com/bllio/ncg",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bllio/ncg"
+  },
+  "bugs": {
+    "url": "https://github.com/bllio/ncg/issues"
+  },
+  "type": "module",
+  "main": "build/index.js",
+  "bin": {
+    "ncg": "./build/index.js"
+  },
+  "files": [
+    "build/"
+  ],
+  "scripts": {
+    "prebuild": "shx rm -rf build/*",
+    "build": "npx tsc --project tsconfig.json",
+    "postbuild": "shx mkdir build/templates/ && shx cp -r \"src/templates/!(README.md)\" build/templates/",
+    "format": "npx prettier . --write",
+    "format:check": "npx prettier . --check"
+  },
+  "dependencies": {
+    "@commander-js/extra-typings": "^13.1.0",
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "handlebars": "^4.7.8",
+    "is-identifier": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.31",
+    "prettier": "3.5.3",
+    "shx": "^0.4.0",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,27 @@
+// Partially based on https://www.totaltypescript.com/tsconfig-cheat-sheet.
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "allowJs": true,
+    "declaration": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "module": "nodenext",
+    "moduleDetection": "force",
+    "moduleResolution": "nodenext",
+    "noEmit": false,
+    "noUncheckedIndexedAccess": true,
+    "outDir": "build",
+    "resolveJsonModule": true, // This is required to import package.json in code.
+    "rootDir": "src",
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2022",
+    "verbatimModuleSyntax": true
+  },
+  "exclude": [
+    "build"
+  ],
+}
