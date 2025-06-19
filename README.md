@@ -7,6 +7,7 @@
 [![GitHub License](https://img.shields.io/github/license/bllio/bllio.github.io)](LICENSE)
 
 - [ncg](#ncg)
+  - [Installation](#installation)
   - [Usage](#usage)
     - [Creating a component](#creating-a-component)
       - [Component naming](#component-naming)
@@ -15,6 +16,14 @@
   - [Background](#background)
   - [Alternative(s)](#alternatives)
   - [License](#license)
+
+## Installation
+
+To install ncg using [npm][npm], run the following command in your terminal:
+
+```sh
+npm install --global @bllio/ncg
+```
 
 ## Usage
 
@@ -115,3 +124,4 @@ This project is licensed under the [MIT License](LICENSE).
 [new-component]: https://github.com/joshwcomeau/new-component
 [joshwcomeau]: https://github.com/joshwcomeau
 [generate-react-cli]: https://github.com/arminbro/generate-react-cli
+[npm]: https://docs.npmjs.com/cli/commands/npm
