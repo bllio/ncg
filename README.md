@@ -4,9 +4,11 @@
 
 **ncg** is a command-line tool for generating [React][react] [TypeScript][typescript] components.
 
-[![GitHub License](https://img.shields.io/github/license/bllio/bllio.github.io)](LICENSE)
+[![GitHub License](https://img.shields.io/github/license/bllio/ncg)](LICENSE)
+[![npm Version](https://img.shields.io/npm/v/@bllio/ncg.svg)](https://www.npmjs.com/package/@bllio/ncg)
 
 - [ncg](#ncg)
+  - [Installation](#installation)
   - [Usage](#usage)
     - [Creating a component](#creating-a-component)
       - [Component naming](#component-naming)
@@ -15,6 +17,14 @@
   - [Background](#background)
   - [Alternative(s)](#alternatives)
   - [License](#license)
+
+## Installation
+
+To install ncg using [npm][npm], run the following command in your terminal:
+
+```sh
+npm install --global @bllio/ncg
+```
 
 ## Usage
 
@@ -115,3 +125,4 @@ This project is licensed under the [MIT License](LICENSE).
 [new-component]: https://github.com/joshwcomeau/new-component
 [joshwcomeau]: https://github.com/joshwcomeau
 [generate-react-cli]: https://github.com/arminbro/generate-react-cli
+[npm]: https://docs.npmjs.com/cli/commands/npm
