@@ -5,6 +5,7 @@
 **ncg** is a command-line tool for generating [React][react] [TypeScript][typescript] components.
 
 [![GitHub License](https://img.shields.io/github/license/bllio/ncg)](LICENSE)
+[![npm Version](https://img.shields.io/npm/v/@bllio/ncg.svg)](https://www.npmjs.com/package/@bllio/ncg)
 
 - [ncg](#ncg)
   - [Installation](#installation)
