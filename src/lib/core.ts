@@ -9,7 +9,7 @@ import isIdentifier from 'is-identifier';
 
 import { capitalizeFirstLetter } from './utils.js';
 
-function validateComponentName(componentName: string) {
+export function validateComponentName(componentName: string) {
   const trimmedName = componentName.trim();
   if (!isIdentifier(trimmedName)) {
     console.error(
@@ -22,7 +22,7 @@ function validateComponentName(componentName: string) {
   return capitalizeFirstLetter(trimmedName);
 }
 
-function compileTemplate(componentName: string) {
+export function compileTemplate(componentName: string) {
   const templateFilePath = path.join(
     import.meta.dirname,
     '../templates/component.handlebars',
@@ -32,7 +32,7 @@ function compileTemplate(componentName: string) {
   return template({ name: componentName });
 }
 
-function writeToFile(componentName: string, content: string) {
+export function writeToFile(componentName: string, content: string) {
   const fileName = `${componentName}.tsx`;
   const destinationFilePath = path.join(process.cwd(), fileName);
   try {
@@ -60,5 +60,3 @@ function writeToFile(componentName: string, content: string) {
     }
   }
 }
-
-export { validateComponentName, compileTemplate, writeToFile };
