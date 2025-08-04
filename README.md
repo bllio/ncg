@@ -98,9 +98,9 @@ version 0.0.1
 
 ## Background
 
-ncg was originally designed as a tool to generate React components that make use of the JavaScript [barrel pattern][barrel]. At the time, I was using the directory structure described in [this blog post][directory-structure-post] for most of my React-based projects, so the initial design for ncg was based on the [`new-component`][new-component] tool developed by the author of the post [Josh Comeau][joshwcomeau].
+ncg was originally designed as a tool to generate React components that make use of the JavaScript [barrel pattern][barrel]. At the time, I was using the directory structure described in [this blog post][directory-structure-post] for most of my React-based projects, so the initial design for ncg was based on the [new-component][new-component] tool developed by the author of the post [Josh Comeau][joshwcomeau].
 
-I wrote my own version of `new-component` from scratch so that I could learn how to write a command-line tool which I could then use in my development workflows. Nowadays, I prefer to organize my React projects differently, and naturally ncg's designs evolved towards a different, more flexible solution.
+I wrote my own version of new-component from scratch so that I could learn how to write a command-line tool which I could then use in my development workflows. Nowadays, I prefer to organize my React projects differently, and naturally ncg's designs evolved towards a different, more flexible solution.
 
 ncg is currently under active development, though it is primarily a hobby project that I work on in my own free time.
 
