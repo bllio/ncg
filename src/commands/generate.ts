@@ -8,7 +8,7 @@ import Handlebars from 'handlebars';
 
 import { writeToFile } from '../lib/core.js';
 
-export function compileTemplate(substitute: string) {
+function compileTemplate(substitute: string) {
   const templatePath = path.join(
     import.meta.dirname,
     '../templates/component.handlebars',
