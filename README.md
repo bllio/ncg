@@ -47,11 +47,9 @@ ncg new Card
 This creates a `Card.tsx` file in the current working directory with the following content:
 
 ```tsx
-function Card() {
+export default function Card() {
   return <div></div>;
 }
-
-export default Card;
 ```
 
 If a file with the same name already exists in the current working directory, the operation will be cancelled without creating any files.
