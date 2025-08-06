@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 // Entry-point for `ncg new` subcommand.
 
 import path from 'node:path';

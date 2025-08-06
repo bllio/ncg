@@ -6,7 +6,7 @@ import { Command } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
 import { validateName } from './lib/core.js';
-import { generate } from './commands/ncg-new.js';
+import { generate } from './commands/generate.js';
 
 import packageConfig from '../package.json' with { type: 'json' };
 
