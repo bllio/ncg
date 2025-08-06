@@ -1,47 +1,29 @@
 // Core functions for component generation.
 
-import { writeFileSync, readFileSync } from 'node:fs';
-import path from 'node:path';
+import { writeFileSync } from 'node:fs';
 
 import chalk from 'chalk';
-import Handlebars from 'handlebars';
 import isIdentifier from 'is-identifier';
 
-import { capitalizeFirstLetter } from './utils.js';
-
-export function validateComponentName(componentName: string) {
-  const trimmedName = componentName.trim();
-  if (!isIdentifier(trimmedName)) {
+export function validateName(value: string) {
+  const trimmed = value.trim();
+  if (!isIdentifier(trimmed)) {
     console.error(
       chalk.red(
-        `Operation aborted. Invalid component name '${componentName}'. Make sure to use a valid JavaScript identifier`,
+        `Error: Invalid component name '${trimmed}'. Please provide a valid JavaScript identifier.`,
       ),
+      `\nFor more information, see ${chalk.underline('https://developer.mozilla.org/en-US/docs/Glossary/Identifier')}.`,
     );
-    process.exit(1);
+    process.exit(1); // Just exit here since that's what program.error() does under the hood.
   }
-  return capitalizeFirstLetter(trimmedName);
+  return trimmed;
 }
 
-export function compileTemplate(componentName: string) {
-  const templateFilePath = path.join(
-    import.meta.dirname,
-    '../templates/component.handlebars',
-  );
-  const content = readFileSync(templateFilePath).toString();
-  const template = Handlebars.compile(content);
-  return template({ name: componentName });
-}
-
-export function writeToFile(componentName: string, content: string) {
-  const fileName = `${componentName}.tsx`;
-  const destinationFilePath = path.join(process.cwd(), fileName);
+// Thin wrapper around writeFileSync to separate program logic from file I/O.
+export function writeToFile(path: string, content: string) {
   try {
-    writeFileSync(destinationFilePath, content, { flag: 'wx' });
-    console.log(
-      chalk.green(
-        `Created component '${componentName}' at ${destinationFilePath}`,
-      ),
-    );
+    writeFileSync(path, content, { flag: 'wx' });
+    return true;
   } catch (error) {
     if (error instanceof Error) {
       // TypeScript does not recognize `code` as a property of `Error` unless we
@@ -50,12 +32,7 @@ export function writeToFile(componentName: string, content: string) {
       // https://stackoverflow.com/questions/40141005/property-code-does-not-exist-on-type-error
       // https://github.com/nodejs/node/issues/46869#issuecomment-2111128428
       if ((error as NodeJS.ErrnoException).code === 'EEXIST') {
-        console.error(
-          chalk.red(
-            `Operation aborted. Component '${componentName}' already exists at ${destinationFilePath}`,
-          ),
-        );
-        process.exit(1);
+        return false;
       }
     }
   }
