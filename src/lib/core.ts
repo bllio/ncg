@@ -1,10 +1,8 @@
 // Core functions for component generation.
 
-import { writeFileSync, readFileSync } from 'node:fs';
-import path from 'node:path';
+import { writeFileSync } from 'node:fs';
 
 import chalk from 'chalk';
-import Handlebars from 'handlebars';
 import isIdentifier from 'is-identifier';
 
 export function validateName(value: string) {
@@ -19,16 +17,6 @@ export function validateName(value: string) {
     process.exit(1); // Just exit here since that's what program.error() does under the hood.
   }
   return trimmed;
-}
-
-export function compileTemplate(componentName: string) {
-  const templateFilePath = path.join(
-    import.meta.dirname,
-    '../templates/component.handlebars',
-  );
-  const content = readFileSync(templateFilePath).toString();
-  const template = Handlebars.compile(content);
-  return template({ name: componentName });
 }
 
 // Thin wrapper around writeFileSync to separate program logic from file I/O.
