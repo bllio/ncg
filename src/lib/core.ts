@@ -31,16 +31,11 @@ export function compileTemplate(componentName: string) {
   return template({ name: componentName });
 }
 
-export function writeToFile(componentName: string, content: string) {
-  const fileName = `${componentName}.tsx`;
-  const destinationFilePath = path.join(process.cwd(), fileName);
+// Thin wrapper around writeFileSync to separate program logic from file I/O.
+export function writeToFile(path: string, content: string) {
   try {
-    writeFileSync(destinationFilePath, content, { flag: 'wx' });
-    console.log(
-      chalk.green(
-        `Created component '${componentName}' at ${destinationFilePath}`,
-      ),
-    );
+    writeFileSync(path, content, { flag: 'wx' });
+    return true;
   } catch (error) {
     if (error instanceof Error) {
       // TypeScript does not recognize `code` as a property of `Error` unless we
@@ -49,12 +44,7 @@ export function writeToFile(componentName: string, content: string) {
       // https://stackoverflow.com/questions/40141005/property-code-does-not-exist-on-type-error
       // https://github.com/nodejs/node/issues/46869#issuecomment-2111128428
       if ((error as NodeJS.ErrnoException).code === 'EEXIST') {
-        console.error(
-          chalk.red(
-            `Operation aborted. Component '${componentName}' already exists at ${destinationFilePath}`,
-          ),
-        );
-        process.exit(1);
+        return false;
       }
     }
   }
