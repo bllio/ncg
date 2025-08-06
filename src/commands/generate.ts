@@ -5,12 +5,10 @@ import path from 'node:path';
 import chalk from 'chalk';
 
 import { compileTemplate, writeToFile } from '../lib/core.js';
-import { capitalizeFirstLetter } from '../lib/utils.js';
 
 // We name it `generate` so that it doesn't conflict with the `new` keyword in
 // JavaScript.
-export function generate(componentName: string) {
-  const name = capitalizeFirstLetter(componentName);
+export function generate(name: string) {
   const filePath = path.join(process.cwd(), `${name}.tsx`);
   const content = compileTemplate(name);
   if (!writeToFile(filePath, content)) {
