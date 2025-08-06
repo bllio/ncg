@@ -7,19 +7,18 @@ import chalk from 'chalk';
 import Handlebars from 'handlebars';
 import isIdentifier from 'is-identifier';
 
-import { capitalizeFirstLetter } from './utils.js';
-
-export function validateComponentName(componentName: string) {
-  const trimmedName = componentName.trim();
-  if (!isIdentifier(trimmedName)) {
+export function validateName(value: string) {
+  const trimmed = value.trim();
+  if (!isIdentifier(trimmed)) {
     console.error(
       chalk.red(
-        `Operation aborted. Invalid component name '${componentName}'. Make sure to use a valid JavaScript identifier`,
+        `Error: Invalid component name '${trimmed}'. Please provide a valid JavaScript identifier.`,
       ),
+      `\nFor more information, see ${chalk.underline('https://developer.mozilla.org/en-US/docs/Glossary/Identifier')}.`,
     );
-    process.exit(1);
+    process.exit(1); // Just exit here since that's what program.error() does under the hood.
   }
-  return capitalizeFirstLetter(trimmedName);
+  return trimmed;
 }
 
 export function compileTemplate(componentName: string) {

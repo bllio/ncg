@@ -5,6 +5,7 @@
 import { Command } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
+import { validateName } from './lib/core.js';
 import { generate } from './commands/ncg-new.js';
 
 import packageConfig from '../package.json' with { type: 'json' };
@@ -26,7 +27,7 @@ program
 program
   .command('new')
   .description('generate a component file')
-  .argument('<componentName>', 'name of the component')
+  .argument('<componentName>', 'name of the component', validateName)
   .showHelpAfterError('Run `ncg new --help` for the usage guide')
   .action((componentName: string) => {
     generate(componentName);
