@@ -27,6 +27,7 @@ export function generate(name: string) {
     console.error(
       chalk.red(`Error: Component '${name}' already exists at ${filePath}`),
     );
+    process.exit(1);
   }
   console.log(chalk.green(`Created component '${name}' at ${filePath}`));
 }
