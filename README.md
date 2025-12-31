@@ -2,6 +2,8 @@
 
 > New component generator
 
+https://github.com/bllio/ncg
+
 **ncg** is a command-line tool for generating [React][react] [TypeScript][typescript] components.
 
 [![GitHub License](https://img.shields.io/github/license/bllio/ncg)](LICENSE)
