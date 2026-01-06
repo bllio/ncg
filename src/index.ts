@@ -16,19 +16,16 @@ const program = new Command();
 program
   .name('ncg')
   .version(`ncg version ${version}`)
+  .addHelpText('before', `ncg - New component generator [version ${version}]\n`)
   .description(
     `ncg is a command-line tool for generating React TypeScript components.`,
-  )
-  .addHelpText(
-    'before',
-    `ncg - New component generator [version ${version}]\n`,
   );
 
 program
   .command('new')
   .description('generate a component file')
-  .argument('<componentName>', 'name of the component', validateName)
   .showHelpAfterError('Run `ncg new --help` for the usage guide')
+  .argument('<componentName>', 'name of the component', validateName)
   .action((componentName: string) => {
     generate(componentName);
   });
