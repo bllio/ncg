@@ -2,7 +2,11 @@
 
 // Program entry-point for ncg.
 
-import { Command } from '@commander-js/extra-typings';
+import {
+  Command,
+  Option,
+  type OptionValues,
+} from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
 import { validateName } from './lib/core.js';
@@ -26,8 +30,13 @@ program
   .description('generate a component file')
   .showHelpAfterError('Run `ncg new --help` for the usage guide')
   .argument('<componentName>', 'name of the component', validateName)
-  .action((componentName: string) => {
-    generate(componentName);
+  .addOption(
+    new Option('--lang <choice>', 'component programming language')
+      .default('ts')
+      .choices(['ts', 'js']),
+  )
+  .action((componentName: string, options: OptionValues) => {
+    generate(componentName, options);
   });
 
 try {

@@ -3,6 +3,7 @@
 import path from 'node:path';
 import { readFileSync } from 'node:fs';
 
+import type { OptionValues } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 import Handlebars from 'handlebars';
 
@@ -20,8 +21,14 @@ function compileTemplate(substitute: string) {
 
 // We name it `generate` so that it doesn't conflict with the `new` keyword in
 // JavaScript.
-export function generate(name: string) {
-  const filePath = path.join(process.cwd(), `${name}.tsx`);
+export function generate(name: string, options: OptionValues) {
+  let extension = '';
+  if (options.lang === 'ts') {
+    extension = 'tsx';
+  } else if (options.lang == 'js') {
+    extension = 'jsx';
+  }
+  const filePath = path.join(process.cwd(), `${name}.${extension}`);
   const content = compileTemplate(name);
   if (!writeToFile(filePath, content)) {
     console.error(
