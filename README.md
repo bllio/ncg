@@ -77,15 +77,15 @@ Any other variation or invalid forms of identifier names will cause the operatio
 
 #### Language option
 
-By default, ncg generates React TypeScript components that have the file extension `.tsx`. You can configure ncg to generate React JavaScript components with `.jsx` instead using the `--lang` option when calling `ncg new`.
+By default, ncg creates React TypeScript components that have the file extension `.tsx`. You can configure ncg to create React JavaScript components with `.jsx` instead using the `--lang` option when calling `ncg new`.
 
 ```sh
-ncg new Card --lang=js
-# or
-ncg new Card --lang js
+ncg new Button --lang=js
+
+ncg new Button --lang js
 ```
 
-Both of these will generate a `Card.jsx` in the current working directory.
+Both of these will create a `Button.jsx` in the current working directory.
 
 Valid values for `--lang` include only `ts` for TypeScript (the default) and `js` for JavaScript.
 
