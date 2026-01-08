@@ -61,7 +61,19 @@ If a file with the same name already exists in the current working directory, th
 
 The `ncg new` command only accepts a valid JavaScript identifier name as the component name. The argument passed to the command is validated using the [`is-identifier`][is-identifier] module.
 
-As per the [official React documentation][react-component-casing], React component names must always start with a capital letter. Even so, ncg expects you to handle the casing by yourself.
+As per the [official React documentation][react-component-casing], React component names must always start with a capital letter. For convenience, ncg accepts the component name under several different casings. It will automatically capitalize the first letter of the provided component name.
+
+For example, all these three variations are valid and will result in a `ListItem` component:
+
+```sh
+ncg new ListItem
+
+ncg new listItem
+
+ncg new 'listItem'
+```
+
+Any other variation or invalid forms of identifier names will cause the operation to be cancelled without creating any files.
 
 #### Language option
 

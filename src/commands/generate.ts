@@ -7,6 +7,8 @@ import type { OptionValues } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 import Handlebars from 'handlebars';
 
+import { capitalize } from '../lib/utils.js';
+
 function compileTemplate(substitute: string) {
   const templatePath = path.join(
     import.meta.dirname,
@@ -26,17 +28,22 @@ export function generate(name: string, options: OptionValues) {
   } else if (options.lang == 'js') {
     extension = 'jsx';
   }
-  const filePath = path.join(process.cwd(), `${name}.${extension}`);
-  const content = compileTemplate(name);
+  const capitalizedName = capitalize(name);
+  const filePath = path.join(process.cwd(), `${capitalizedName}.${extension}`);
+  const content = compileTemplate(capitalizedName);
   if (existsSync(filePath)) {
     console.error(
-      chalk.red(`Error: Component '${name}' already exists at ${filePath}`),
+      chalk.red(
+        `Error: Component '${capitalizedName}' already exists at ${filePath}`,
+      ),
     );
     process.exit(1);
   }
   try {
     writeFileSync(filePath, content);
-    console.log(chalk.green(`Created component '${name}' at ${filePath}`));
+    console.log(
+      chalk.green(`Created component '${capitalizedName}' at ${filePath}`),
+    );
   } catch (error) {
     if (error instanceof Error) {
       console.error(chalk.red(error.message));
