@@ -1,13 +1,11 @@
 // Entry-point for `ncg new` subcommand.
 
 import path from 'node:path';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 
 import type { OptionValues } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 import Handlebars from 'handlebars';
-
-import { writeToFile } from '../lib/core.js';
 
 function compileTemplate(substitute: string) {
   const templatePath = path.join(
@@ -30,11 +28,19 @@ export function generate(name: string, options: OptionValues) {
   }
   const filePath = path.join(process.cwd(), `${name}.${extension}`);
   const content = compileTemplate(name);
-  if (!writeToFile(filePath, content)) {
+  if (existsSync(filePath)) {
     console.error(
       chalk.red(`Error: Component '${name}' already exists at ${filePath}`),
     );
     process.exit(1);
   }
-  console.log(chalk.green(`Created component '${name}' at ${filePath}`));
+  try {
+    writeFileSync(filePath, content);
+    console.log(chalk.green(`Created component '${name}' at ${filePath}`));
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(chalk.red(error.message));
+    }
+    process.exit(1);
+  }
 }
