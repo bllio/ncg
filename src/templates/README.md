@@ -2,7 +2,7 @@
 
 This directory contains all of ncg's default template files.
 
-ncg makes use of template files to generate components. It utilizes [Handlebars](handlebars), a [templating engine](template-engine), to compile the templates into actual component files such as [`.jsx`](jsx) or [`.tsx`](tsx).
+ncg makes use of template files to generate components. It utilizes [Handlebars][handlebars], a [templating engine][template-engine], to compile the templates into actual component files such as [`.jsx`][jsx] or [`.tsx`][tsx].
 
 <!-- URLs -->
 
