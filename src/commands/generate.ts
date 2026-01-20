@@ -22,14 +22,17 @@ function compileTemplate(substitute: string) {
 // We name it `generate` so that it doesn't conflict with the `new` keyword in
 // JavaScript.
 export function generate(name: string, options: OptionValues) {
-  let extension = '';
+  let fileExtension = '';
   if (options.lang === 'ts') {
-    extension = 'tsx';
+    fileExtension = 'tsx';
   } else if (options.lang == 'js') {
-    extension = 'jsx';
+    fileExtension = 'jsx';
   }
   const capitalizedName = capitalize(name);
-  const filePath = path.join(process.cwd(), `${capitalizedName}.${extension}`);
+  const filePath = path.join(
+    process.cwd(),
+    `${capitalizedName}.${fileExtension}`,
+  );
   const content = compileTemplate(capitalizedName);
   if (existsSync(filePath)) {
     console.error(
