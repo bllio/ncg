@@ -40,7 +40,6 @@ export function generate(name: string, options: GenerateCommandOptions) {
     process.cwd(),
     `${capitalizedName}.${fileExtension}`,
   );
-  const content = compileTemplate(capitalizedName);
 
   if (existsSync(filePath)) {
     console.error(
@@ -52,6 +51,7 @@ export function generate(name: string, options: GenerateCommandOptions) {
   }
 
   try {
+    const content = compileTemplate(capitalizedName);
     writeFileSync(filePath, content);
     console.log(
       chalk.green(`Created component '${capitalizedName}' at ${filePath}`),
