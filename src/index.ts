@@ -2,15 +2,11 @@
 
 // Program entry-point for ncg.
 
-import {
-  Command,
-  Option,
-  type OptionValues,
-} from '@commander-js/extra-typings';
+import { Command, Option } from '@commander-js/extra-typings';
 import chalk from 'chalk';
 
 import { validateName } from './lib/core.js';
-import { generate } from './commands/generate.js';
+import { generate, type GenerateCommandOptions } from './commands/generate.js';
 
 import packageConfig from '../package.json' with { type: 'json' };
 
@@ -35,7 +31,7 @@ program
       .default('ts')
       .choices(['ts', 'js']),
   )
-  .action((componentName: string, options: OptionValues) => {
+  .action((componentName: string, options: GenerateCommandOptions) => {
     generate(componentName, options);
   });
 

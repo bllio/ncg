@@ -19,16 +19,23 @@ function compileTemplate(substitute: string) {
   return template({ name: substitute });
 }
 
+function setFileExtension(lang: string) {
+  if (lang === 'ts') {
+    return 'tsx';
+  } else if (lang == 'js') {
+    return 'jsx';
+  }
+}
+
+export interface GenerateCommandOptions extends OptionValues {
+  lang: string;
+}
+
 // We name it `generate` so that it doesn't conflict with the `new` keyword in
 // JavaScript.
-export function generate(name: string, options: OptionValues) {
-  let fileExtension = '';
-  if (options.lang === 'ts') {
-    fileExtension = 'tsx';
-  } else if (options.lang == 'js') {
-    fileExtension = 'jsx';
-  }
+export function generate(name: string, options: GenerateCommandOptions) {
   const capitalizedName = capitalize(name);
+  const fileExtension = setFileExtension(options.lang);
   const filePath = path.join(
     process.cwd(),
     `${capitalizedName}.${fileExtension}`,
