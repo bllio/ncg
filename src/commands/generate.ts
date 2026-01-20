@@ -41,6 +41,7 @@ export function generate(name: string, options: GenerateCommandOptions) {
     `${capitalizedName}.${fileExtension}`,
   );
   const content = compileTemplate(capitalizedName);
+
   if (existsSync(filePath)) {
     console.error(
       chalk.red(
@@ -49,6 +50,7 @@ export function generate(name: string, options: GenerateCommandOptions) {
     );
     process.exit(1);
   }
+
   try {
     writeFileSync(filePath, content);
     console.log(
