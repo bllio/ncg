@@ -15,6 +15,7 @@ https://github.com/bllio/ncg
     - [Creating a component](#creating-a-component)
       - [Component naming](#component-naming)
       - [Language option](#language-option)
+      - [Dry run](#dry-run)
     - [Display help menu](#display-help-menu)
     - [Version check](#version-check)
   - [Background](#background)
@@ -88,6 +89,16 @@ ncg new Button --lang js
 Both of these will create a `Button.jsx` in the current working directory.
 
 Valid values for `--lang` include only `ts` for TypeScript (the default) and `js` for JavaScript.
+
+#### Dry run
+
+If you would like to try the `ncg new` command without creating any files, you can add the `--dry-run` option like so:
+
+```sh
+ncg new Carousel --dry-run
+```
+
+This will print the resulting path of the component file but will not actually create the file.
 
 ### Display help menu
 

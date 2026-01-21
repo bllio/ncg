@@ -31,6 +31,12 @@ program
       .default('ts')
       .choices(['ts', 'js']),
   )
+  .addOption(
+    new Option(
+      '--dry-run',
+      'print the resulting component file path without creating a file',
+    ),
+  )
   .action((componentName: string, options: GenerateCommandOptions) => {
     generate(componentName, options);
   });

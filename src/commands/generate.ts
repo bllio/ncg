@@ -29,6 +29,7 @@ function setFileExtension(lang: string) {
 
 export interface GenerateCommandOptions extends OptionValues {
   lang: string;
+  dryRun?: boolean;
 }
 
 // We name it `generate` so that it doesn't conflict with the `new` keyword in
@@ -50,16 +51,19 @@ export function generate(name: string, options: GenerateCommandOptions) {
     process.exit(1);
   }
 
-  try {
-    const content = compileTemplate(capitalizedName);
-    writeFileSync(filePath, content);
-    console.log(
-      chalk.green(`Created component '${capitalizedName}' at ${filePath}`),
-    );
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(chalk.red(error.message));
+  if (!options.dryRun) {
+    try {
+      const content = compileTemplate(capitalizedName);
+      writeFileSync(filePath, content);
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(chalk.red(error.message));
+      }
+      process.exit(1);
     }
-    process.exit(1);
   }
+
+  console.log(
+    chalk.green(`Created component '${capitalizedName}' at ${filePath}`),
+  );
 }
