@@ -1,7 +1,7 @@
 {
   "name": "@bllio/ncg",
   "version": "0.0.2",
-  "description": "Command-line tool for generating React TypeScript components",
+  "description": "Command-line tool for generating React components",
   "author": "Syabil Yusoff",
   "license": "MIT",
   "keywords": [

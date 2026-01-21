@@ -4,7 +4,7 @@
 
 https://github.com/bllio/ncg
 
-**ncg** is a command-line tool for generating [React][react] [TypeScript][typescript] components.
+**ncg** is a command-line tool for generating [React][react] components.
 
 [![GitHub License](https://img.shields.io/github/license/bllio/ncg)](LICENSE)
 [![npm Version](https://img.shields.io/npm/v/@bllio/ncg.svg)](https://www.npmjs.com/package/@bllio/ncg)
@@ -78,7 +78,7 @@ Any other variation or invalid forms of identifier names will cause the operatio
 
 #### Language option
 
-By default, ncg creates React TypeScript components that have the file extension `.tsx`. You can configure ncg to create React JavaScript components with `.jsx` instead using the `--lang` option when calling `ncg new`.
+By default, ncg creates React [TypeScript][typescript] components that have the file extension `.tsx`. You can configure ncg to create React JavaScript components with `.jsx` instead using the `--lang` option when calling `ncg new`.
 
 ```sh
 ncg new Button --lang=js

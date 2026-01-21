@@ -17,9 +17,7 @@ program
   .name('ncg')
   .version(`ncg version ${version}`)
   .addHelpText('before', `ncg - New component generator [version ${version}]\n`)
-  .description(
-    `ncg is a command-line tool for generating React TypeScript components.`,
-  );
+  .description(`ncg is a command-line tool for generating React components.`);
 
 program
   .command('new')
